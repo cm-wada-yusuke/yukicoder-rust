@@ -1,0 +1,51 @@
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+authors = ["Yusuke Wada <wada.yusuke@classmethod.jp>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4"
+
+[[bin]]
+name = "9000"
+path = "src/9000.rs"
+
+[[bin]]
+name = "480"
+path = "src/480.rs"
+
+[[bin]]
+name = "9002"
+path = "src/9002.rs"
+
+[[bin]]
+name = "9008"
+path = "src/9008.rs"
+
+[[bin]]
+name = "9009"
+path = "src/9009.rs"
+
+[[bin]]
+name = "46"
+path = "src/46.rs"
+
+
+[[bin]]
+name = "388"
+path = "src/388.rs"
+
+[[bin]]
+name = "188"
+path = "src/188.rs"
+
+[[bin]]
+name = "264"
+path = "src/264.rs"
+
+[[bin]]
+name = "207"
+path = "src/207.rs"
