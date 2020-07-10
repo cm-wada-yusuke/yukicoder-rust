@@ -49,3 +49,20 @@ path = "src/264.rs"
 [[bin]]
 name = "207"
 path = "src/207.rs"
+
+[[bin]]
+name = "32"
+path = "src/32.rs"
+
+[[bin]]
+name = "163"
+path = "src/163.rs"
+
+
+[[bin]]
+name = "253"
+path = "src/253.rs"
+
+[[bin]]
+name = "275"
+path = "src/275.rs"
