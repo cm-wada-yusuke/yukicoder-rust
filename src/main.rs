@@ -36,6 +36,12 @@ fn getline_as_u64_vec() -> Vec<u64> {
     nlv.into_iter().map(|x| x.parse::<u64>().unwrap()).collect()
 }
 
+fn getline_as_u32_vec() -> Vec<u32> {
+    let l = getline();
+    let nlv: Vec<_> = l.trim().split(' ').collect();
+    nlv.into_iter().map(|x| x.parse::<u32>().unwrap()).collect()
+}
+
 // 与えられた文字列を char のベクタに変換します
 fn to_char_vector(str: &str) -> Vec<char> {
     str.chars().collect::<Vec<char>>()
