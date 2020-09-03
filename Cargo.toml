@@ -78,3 +78,24 @@ path = "src/56.rs"
 [[bin]]
 name = "5"
 path = "src/5.rs"
+
+[[bin]]
+name = "63"
+path = "src/63.rs"
+
+[[bin]]
+name = "481"
+path = "src/481.rs"
+
+[[bin]]
+name = "289"
+path = "src/289.rs"
+
+[[bin]]
+name = "47"
+path = "src/47.rs"
+
+[[bin]]
+name = "48"
+path = "src/48.rs"
+

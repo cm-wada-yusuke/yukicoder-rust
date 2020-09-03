@@ -12,8 +12,9 @@ fn getline_as_u64_vec() -> Vec<u64> {
 
 fn main() {
     let dp = getline_as_u64_vec();
-    let d = dp[0] as f64;
-    let p = dp[1] as f64;
+    let d = dp[0];
+    let p = dp[1];
 
-    println!("{}", (d + (d * p / 100.0).floor()) as u64)
+    // println!("{}", (d + (d * p / 100.0).floor()) as u64)
+    println!("{}", d + ((d * p) / 100));
 }

@@ -1,4 +1,5 @@
 use chrono::Local;
+use std::io::Split;
 
 fn main() {
     println!("Hello, world! {}", Local::today());
@@ -32,14 +33,14 @@ fn getline_as_str() -> String {
 // 一行のスペース区切りを u64 のベクタで取得する 例：1 2 3 4 4 => <1, 2, 3, 4>
 fn getline_as_u64_vec() -> Vec<u64> {
     let l = getline();
-    let nlv: Vec<_> = l.trim().split(' ').collect();
-    nlv.into_iter().map(|x| x.parse::<u64>().unwrap()).collect()
+    let nlv = l.trim().split(' ');
+    nlv.map(|x| x.parse::<u64>().unwrap()).collect()
 }
 
 fn getline_as_u32_vec() -> Vec<u32> {
     let l = getline();
-    let nlv: Vec<_> = l.trim().split(' ').collect();
-    nlv.into_iter().map(|x| x.parse::<u32>().unwrap()).collect()
+    let nlv = l.trim().split(' ');
+    nlv.map(|x| x.parse::<u32>().unwrap()).collect()
 }
 
 // 与えられた文字列を char のベクタに変換します
