@@ -99,3 +99,7 @@ path = "src/47.rs"
 name = "48"
 path = "src/48.rs"
 
+[[bin]]
+name = "296"
+path = "src/296.rs"
+
