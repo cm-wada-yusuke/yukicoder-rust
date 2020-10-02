@@ -17,6 +17,12 @@ fn getline_as_i32() -> i32 {
     nlv[0].parse::<i32>().unwrap()
 }
 
+fn getline_as_u32() -> u32 {
+    let l = getline();
+    let nlv: Vec<_> = l.trim().split(' ').collect();
+    nlv[0].parse::<u32>().unwrap()
+}
+
 fn getline_as_u64() -> u64 {
     let l = getline();
     let nlv: Vec<_> = l.trim().split(' ').collect();
