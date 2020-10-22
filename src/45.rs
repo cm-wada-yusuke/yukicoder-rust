@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use std::cmp::{max, Ordering};
 use std::collections::BinaryHeap;
 
 fn getline() -> String {
@@ -48,57 +48,17 @@ struct Edge {
     cost: usize,
 }
 
-// Dijkstra's shortest path algorithm.
-
-// Start at `start` and use `dist` to track the current shortest distance
-// to each node. This implementation isn't memory-efficient as it may leave duplicate
-// nodes in the queue. It also uses `usize::MAX` as a sentinel value,
-// for a simpler implementation.
-fn shortest_path(adj_list: &Vec<Vec<Edge>>, start: usize, goal: usize) -> Option<usize> {
+fn warshall_floyd_max(dist: &mut Vec<Vec<Edge>>) -> usize {
     // dist[node] = current shortest distance from `start` to `node`
-    let mut dist: Vec<_> = (0..adj_list.len()).map(|_| usize::MAX).collect();
-    // let mut prever: Vec<i32> = (0..adj_list.len()).map(|_| -1).collect();
+    // let mut dist: Vec<_> = (0..adj_list.len()).map(|_| usize::MIN).collect();
 
-    let mut heap = BinaryHeap::new();
-
-    // We're at `start`, with a zero cost
-    dist[start] = 0;
-    heap.push(State {
-        cost: 0,
-        position: start,
-    });
-
-    // Examine the frontier with lower cost nodes first (min-heap)
-    while let Some(State { cost, position }) = heap.pop() {
-        // Alternatively we could have continued to find all shortest paths
-        if position == goal {
-            return Some(cost);
-        }
-
-        // Important as we may have already found a better way
-        if cost > dist[position] {
-            continue;
-        }
-
-        // For each node we can reach, see if we can find a way with
-        // a lower cost going through this node
-        for edge in &adj_list[position] {
-            let next = State {
-                cost: cost + edge.cost,
-                position: edge.node,
-            };
-
-            // If so, add it to the frontier and continue
-            if next.cost < dist[next.position] {
-                heap.push(next);
-                // Relaxation, we have now found a better way
-                dist[next.position] = next.cost;
+    for k in 0..adj_list.len() {
+        for i in 0..adj_list.len() {
+            for j in 0..adj_list.len() {
+                dist[i][j].cost = max(dist[i][j].cost, dist[i][j].cost + dist[k][j].cost)
             }
         }
     }
-
-    // Goal not reachable
-    None
 }
 
 // n を与えられると graph を返す関数を用意したい
@@ -152,11 +112,7 @@ fn gen_bit_graph(n: u32) -> Vec<Vec<Edge>> {
 fn main() {
     let n: u32 = getline_as_u32();
 
-    // ビットすごろくをすべての辺が重み1の有向グラフ 最短経路問題に変換する
-    // 数値をビット合計に変換（たぶんいけた）
-    // ノードを生成する
-    // グラフを生成する
-    // ダイクストラ適用
+    // ワーシャルフロイドで全点最大経路を求め、虱潰しに全点のうち最大値を探すのはどうでしょうか
 
     // This is the directed graph we're going to use.
     // The node numbers correspond to the different states,
